@@ -8,9 +8,19 @@ class SearchController < ApplicationController
             faraday.adapter Faraday.default_adapter
         end
 
-        response = conn.get("/v1/houses/5a05e2b252f721a3cf2ea33f")
+        response = conn.get("/v1/characters")
         json = JSON.parse(response.body, symbolize_names: true)
-        @members = json.first[:members]
-    end
 
+        @members = json.reduce([]) { |members, member|
+            if member[:house] == params[:house] && member[:orderOfThePhoenix] == false
+                members << member
+            end
+            members}
+
+        @orderofthephoenix = json.reduce([]) { |members, member|
+            if member[:house] == params[:house] && member[:orderOfThePhoenix] == true
+                members << member
+            end
+            members}
+    end
 end
