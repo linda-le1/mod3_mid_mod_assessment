@@ -10,7 +10,7 @@ feature 'user can search for house members' do
 
         expect(current_path).to eq(search_path)
 
-        expect(page).to have_content("21 Members of Gryffindor")
+        expect(page).to have_content("41 Total Members of Gryffindor")
 
         expect(page).to have_css(".member", count: 21)
 
@@ -19,6 +19,7 @@ feature 'user can search for house members' do
             expect(page).to have_css('.role')
             expect(page).to have_css('.house')
             expect(page).to have_css('.Patronus')
+        end
     end
 end
 
