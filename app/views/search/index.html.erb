@@ -1,1 +1,10 @@
-<h1> <%= @members.count %>Members </h1>
+<h1> <%= @members.count %> Total
+
+<% @members.each do |member| %>
+  <ul class = "member">
+    <li class="name"><%= member[:name] %></li>
+    <li class="role"><%= member[:role] %></li>
+    <li class="house"><%= member[:house] %></li>
+    <li class="patronus"><%= member[:patronus] %></li>
+  </ul>
+  <% end %>
