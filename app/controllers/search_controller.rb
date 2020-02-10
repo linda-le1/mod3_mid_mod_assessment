@@ -11,12 +11,6 @@ class SearchController < ApplicationController
         response = conn.get("/v1/characters")
         json = JSON.parse(response.body, symbolize_names: true)
 
-        @members = json.reduce([]) { |members, member|
-            if member[:house] == params[:house] && member[:orderOfThePhoenix] == false
-                members << member
-            end
-            members}
-
         @orderofthephoenix = json.reduce([]) { |members, member|
             if member[:house] == params[:house] && member[:orderOfThePhoenix] == true
                 members << member
